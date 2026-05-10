@@ -1,13 +1,11 @@
 package org.liamb.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @EqualsAndHashCode
 @ToString
+@AllArgsConstructor
 public abstract class Item {
     protected String id;
     @Setter protected ItemStatus status;
