@@ -18,6 +18,6 @@ public class Teacher extends User{
 
     @Override
     public void borrowItem(Item item) {
-        //TODO borrow item with limit of 10 items
+        //TODO borrow item with limit of 10 items, unit test and exception handling
     }
 }
