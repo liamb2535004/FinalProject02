@@ -1,11 +1,12 @@
 package org.liamb.domain;
 
 import lombok.ToString;
+import org.liamb.interfaces.Reportable;
 
 import java.util.List;
 
 @ToString(callSuper = true)
-public class Admin extends User{
+public class Admin extends User implements Reportable {
 
     public Admin(String name) {
         super(name);
@@ -15,6 +16,7 @@ public class Admin extends User{
         super(id, name, borrowedItems);
     }
 
+    @Override
     public void generateReport() {
         //TODO write method, unit test and exception handling
     }
