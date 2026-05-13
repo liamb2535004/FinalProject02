@@ -12,8 +12,8 @@ public class Admin extends User implements Reportable {
         super(name);
     }
 
-    public Admin(String id, String name, List<Item> borrowedItems) {
-        super(id, name, borrowedItems);
+    public Admin(String id, String name) {
+        super(id, name);
     }
 
     @Override

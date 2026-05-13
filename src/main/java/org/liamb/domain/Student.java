@@ -13,8 +13,8 @@ public class Student extends User{
         super(name);
     }
 
-    public Student(String id, String name, List<Item> borrowedItems) {
-        super(id, name, borrowedItems);
+    public Student(String id, String name) {
+        super(id, name);
     }
 
     @Override

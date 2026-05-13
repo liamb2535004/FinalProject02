@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 @EqualsAndHashCode
 @ToString
-@AllArgsConstructor
 public abstract class User {
     protected String id;
     protected String name;
@@ -23,6 +22,11 @@ public abstract class User {
 
     public User(String name) {
         this.id = String.format("%04d", nextId++);
+        this.name = name;
+        this.borrowedItems = new ArrayList<>();
+    }
+    public User(String id, String name) {
+        this.id = id;
         this.name = name;
         this.borrowedItems = new ArrayList<>();
     }
