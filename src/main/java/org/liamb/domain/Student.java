@@ -19,7 +19,7 @@ public class Student extends User{
 
     @Override
     public void borrowItem(Item item) throws ItemUnavailableException {
-        //TODO borrow item with limit of 5 items, unit test and exception handling
+        //TODO unit test
         if (!(item instanceof Book)) {
             throw new ItemUnavailableException("Invalid operation: Students may only borrow books");
         }

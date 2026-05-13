@@ -2,6 +2,8 @@ package org.liamb.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.liamb.Exceptions.ItemUnavailableException;
+import org.liamb.util.Constants;
 
 import java.util.List;
 
@@ -17,7 +19,12 @@ public class Teacher extends User{
     }
 
     @Override
-    public void borrowItem(Item item) {
-        //TODO borrow item with limit of 10 items, unit test and exception handling
+    public void borrowItem(Item item) throws ItemUnavailableException {
+        //TODO unit test
+        if (this.borrowedItems.size() >= Constants.MAX_ITEMS_TEACHER) {
+            throw new ItemUnavailableException("Invalid operation: teacher has reached maximum borrow limit");
+        }
+
+        super.borrowItem(item);
     }
 }
