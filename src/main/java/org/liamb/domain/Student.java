@@ -4,14 +4,8 @@ import lombok.ToString;
 import org.liamb.Exceptions.ItemUnavailableException;
 import org.liamb.util.Constants;
 
-import java.util.List;
-
 @ToString(callSuper = true)
 public class Student extends User{
-
-    public Student(String name) {
-        super(name);
-    }
 
     public Student(String id, String name) {
         super(id, name);

@@ -1,6 +1,5 @@
 package org.liamb.service;
 
-import lombok.Getter;
 import org.liamb.Exceptions.InvalidIsbnException;
 import org.liamb.Exceptions.ItemUnavailableException;
 import org.liamb.domain.*;
@@ -8,13 +7,54 @@ import org.liamb.util.Constants;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-@Getter
 public class LibraryManagementSystem {
     private List<User> users = new ArrayList<>();
     private List<Item> items = new ArrayList<>();
+
+    private int maxUserId = 0;
+    private int maxItemId = 0;
+
+    public List<User> getUsers() {
+        return Collections.unmodifiableList(this.users);
+    }
+
+    public List<Item> getItems() {
+        return Collections.unmodifiableList(this.items);
+    }
+
+    public void addNewStudent(String name) {
+        String newId = String.format("U%04d", generateNextUserId());
+        this.users.add(new Student(newId, name));
+    }
+
+    public void addNewAdmin(String name) {
+        String newId = String.format("U%04d", generateNextUserId());
+        this.users.add(new Admin(newId, name));
+    }
+
+    public void addNewTeacher(String name) {
+        String newId = String.format("U%04d", generateNextUserId());
+        this.users.add(new Teacher(newId, name));
+    }
+
+    public void addNewBook(String title, String isbn, String author, String genre) {
+        String newId = String.format("B%04d", generateNextItemId());
+        this.items.add(new Book(newId, Item.ItemStatus.IN_STORE, title, isbn, author, genre));
+    }
+
+    public void addNewDVD(String title, String director, int duration) {
+        String newId = String.format("B%04d", generateNextItemId());
+        this.items.add(new DVD(newId, Item.ItemStatus.IN_STORE, title, director, duration));
+    }
+
+    public void addNewMagazine(String title, String issueNumber, String publisher) {
+        String newId = String.format("B%04d", generateNextItemId());
+        this.items.add(new Magazine(newId, Item.ItemStatus.IN_STORE, title, issueNumber, publisher));
+    }
 
     /**
      * reads the data from the users.csv and items.csv files and
@@ -99,6 +139,7 @@ public class LibraryManagementSystem {
         } catch (FileNotFoundException e) {
             System.out.println("Warning: a CSV file is missing " + e.getMessage());
         }
+        initializeIdCounters();
     }
 
     /**
@@ -242,5 +283,40 @@ public class LibraryManagementSystem {
             items.set(i, temp);
 
         }
+    }
+
+    /**
+     * initialises the ID counters, finding the value of the most recent ID for the users and items
+     */
+    public void initializeIdCounters() {
+        for (User user : this.users) {
+            try {
+                int currentId = Integer.parseInt(user.getId().substring(1));
+                if (currentId > maxUserId) {
+                    maxUserId = currentId;
+                }
+            } catch (NumberFormatException e) {
+                //ignore
+            }
+        }
+
+        for (Item item : this.items) {
+            try {
+                int currentId = Integer.parseInt(item.getId().substring(1));
+                if (currentId > maxItemId) {
+                    maxItemId = currentId;
+                }
+            } catch (NumberFormatException e) {
+                // ignore
+            }
+        }
+    }
+
+    private int generateNextUserId() {
+        return ++maxUserId;
+    }
+
+    private int generateNextItemId() {
+        return ++maxItemId;
     }
 }

@@ -1,18 +1,11 @@
 package org.liamb.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.liamb.Exceptions.ItemUnavailableException;
 import org.liamb.util.Constants;
 
-import java.util.List;
-
 @ToString(callSuper = true)
 public class Teacher extends User{
-
-    public Teacher(String name) {
-        super(name);
-    }
 
     public Teacher(String id, String name) {
         super(id, name);

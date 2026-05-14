@@ -16,10 +16,6 @@ import java.util.Map;
 @ToString(callSuper = true)
 public class Admin extends User implements Reportable {
 
-    public Admin(String name) {
-        super(name);
-    }
-
     public Admin(String id, String name) {
         super(id, name);
     }

@@ -11,10 +11,8 @@ public abstract class Item {
     @Setter protected ItemStatus status;
     protected String title;
 
-    private static int nextId = 1;
-
-    public Item(String title) {
-        this.id = String.format("%04d", nextId++);
+    public Item(String id, String title) {
+        this.id = id;
         this.status = ItemStatus.IN_STORE;
         this.title = title;
     }
