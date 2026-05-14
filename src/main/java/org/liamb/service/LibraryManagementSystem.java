@@ -181,12 +181,38 @@ public class LibraryManagementSystem {
     }
 
     public void sortUsers() {
-        //TODO write method, unit test and exception handling
-        //bubble
+        //TODO unit test
+        //bubble sorting
+        if (users == null || users.size() <= 1) {
+            return;
+        }
+
+        for (int i = 0; i < users.size() - 1; i++) {
+            for (int j = 0; j < users.size() - 1 - i; j++) {
+                String name1 = users.get(j).getName();
+                String name2 = users.get(j + 1).getName();
+
+                if (name1.compareToIgnoreCase(name2) > 0) {
+                    User temp = users.get(j);
+                    users.set(j, users.get(j + 1));
+                    users.set(j + 1, temp);
+                }
+            }
+        }
     }
 
     public void sortItems() {
         //TODO write method, unit test and exception handling
         //Insertion
+        if (items == null || items.size() <= 1) {
+            return;
+        }
+
+        for (int i = 1; i < items.size(); i++) {
+            Item item = items.get(i);
+            String title = item.getTitle();
+
+            int j = i - 1;
+        }
     }
 }
