@@ -18,39 +18,78 @@ public class LibraryManagementSystem {
     private int maxUserId = 0;
     private int maxItemId = 0;
 
+    /**
+     * read only users getter
+     * @return users list
+     */
     public List<User> getUsers() {
         return Collections.unmodifiableList(this.users);
     }
 
+    /**
+     * read only items getter
+     * @return items list
+     */
     public List<Item> getItems() {
         return Collections.unmodifiableList(this.items);
     }
 
+    /**
+     * adds student to the users list
+     * @param name student's name
+     */
     public void addNewStudent(String name) {
         String newId = String.format("U%04d", generateNextUserId());
         this.users.add(new Student(newId, name));
     }
 
+    /**
+     * adds admin to the users list
+     * @param name admin's name
+     */
     public void addNewAdmin(String name) {
         String newId = String.format("U%04d", generateNextUserId());
         this.users.add(new Admin(newId, name));
     }
 
+    /**
+     * adds teacher to the users list
+     * @param name teacher's name
+     */
     public void addNewTeacher(String name) {
         String newId = String.format("U%04d", generateNextUserId());
         this.users.add(new Teacher(newId, name));
     }
 
+    /**
+     * adds book to the items list
+     * @param title title of the book
+     * @param isbn isbn of the book
+     * @param author author of the book
+     * @param genre genre of the book
+     */
     public void addNewBook(String title, String isbn, String author, String genre) {
         String newId = String.format("B%04d", generateNextItemId());
         this.items.add(new Book(newId, Item.ItemStatus.IN_STORE, title, isbn, author, genre));
     }
 
+    /**
+     * adds a dvd to the items list
+     * @param title title of the dvd
+     * @param director director of the dvd
+     * @param duration duration of the dvd
+     */
     public void addNewDVD(String title, String director, int duration) {
         String newId = String.format("D%04d", generateNextItemId());
         this.items.add(new DVD(newId, Item.ItemStatus.IN_STORE, title, director, duration));
     }
 
+    /**
+     * adds a magazine to the items list
+     * @param title title of the magazine
+     * @param issueNumber issueNumber of the magazine
+     * @param publisher publisher of the magazine
+     */
     public void addNewMagazine(String title, String issueNumber, String publisher) {
         String newId = String.format("M%04d", generateNextItemId());
         this.items.add(new Magazine(newId, Item.ItemStatus.IN_STORE, title, issueNumber, publisher));
