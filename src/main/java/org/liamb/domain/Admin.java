@@ -8,7 +8,10 @@ import org.liamb.util.Constants;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @ToString(callSuper = true)
 public class Admin extends User implements Reportable {
@@ -22,8 +25,40 @@ public class Admin extends User implements Reportable {
     }
 
     @Override
-    public void generateReport() {
-        //TODO write method, unit test and exception handling
+    public void generateReport(LibraryManagementSystem libraryManagementSystem) {
+        //TODO unit test
+        System.out.println("--- LIBRARY REPORT ---");
+        List<Item> items = libraryManagementSystem.getItems();
+
+        Map<Item.ItemStatus, List<Item>> categorizedItems = new HashMap<>();
+        categorizedItems.put(Item.ItemStatus.IN_STORE, new ArrayList<>());
+        categorizedItems.put(Item.ItemStatus.BORROWED, new ArrayList<>());
+        categorizedItems.put(Item.ItemStatus.LOST, new ArrayList<>());
+
+        for (Item item : items) {
+            categorizedItems.get(item.getStatus()).add(item);
+        }
+
+        System.out.println("Total Items In-Store: " + categorizedItems.get(Item.ItemStatus.IN_STORE).size());
+        System.out.println("Total Items Borrowed: " + categorizedItems.get(Item.ItemStatus.BORROWED).size());
+        System.out.println("Total Items Lost:     " + categorizedItems.get(Item.ItemStatus.LOST).size());
+        System.out.println("--------------------------------");
+
+        for (Item.ItemStatus status : Item.ItemStatus.values()) {
+            System.out.println("--- " + status + " ITEMS ---");
+            List<Item> itemsInStatus = categorizedItems.get(status);
+
+            if (itemsInStatus.isEmpty()) {
+                System.out.println("  (No items currently have this status)");
+            } else {
+                for (Item item : itemsInStatus) {
+                    System.out.println("  - [" + item.getClass().getSimpleName() + "] "
+                            + item.getTitle() + " (ID: " + item.getId() + ")");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("================================\n");
     }
 
     public void backupData(LibraryManagementSystem libraryManagementSystem) {
