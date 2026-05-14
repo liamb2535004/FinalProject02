@@ -202,17 +202,26 @@ public class LibraryManagementSystem {
     }
 
     public void sortItems() {
-        //TODO write method, unit test and exception handling
-        //Insertion
+        //TODO unit test
+        //selection
         if (items == null || items.size() <= 1) {
             return;
         }
 
-        for (int i = 1; i < items.size(); i++) {
-            Item item = items.get(i);
-            String title = item.getTitle();
+        for (int i = 0; i < items.size() - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < items.size(); j++) {
+                String currentTitle = items.get(j).getTitle();
+                String minTitle = items.get(minIdx).getTitle();
 
-            int j = i - 1;
+                if (currentTitle.compareToIgnoreCase(minTitle) < 0) {
+                    minIdx = j;
+                }
+            }
+            Item temp = items.get(minIdx);
+            items.set(minIdx, items.get(i));
+            items.set(i, temp);
+
         }
     }
 }
