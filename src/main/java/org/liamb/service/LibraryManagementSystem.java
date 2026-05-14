@@ -47,12 +47,12 @@ public class LibraryManagementSystem {
     }
 
     public void addNewDVD(String title, String director, int duration) {
-        String newId = String.format("B%04d", generateNextItemId());
+        String newId = String.format("D%04d", generateNextItemId());
         this.items.add(new DVD(newId, Item.ItemStatus.IN_STORE, title, director, duration));
     }
 
     public void addNewMagazine(String title, String issueNumber, String publisher) {
-        String newId = String.format("B%04d", generateNextItemId());
+        String newId = String.format("M%04d", generateNextItemId());
         this.items.add(new Magazine(newId, Item.ItemStatus.IN_STORE, title, issueNumber, publisher));
     }
 
