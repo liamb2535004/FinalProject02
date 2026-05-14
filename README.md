@@ -49,7 +49,7 @@ add methods:
 operation using the Validation class and throw exceptions like ItemUnavailableException 
 if a limit is reached or the item is missing.
 
-3. Searching the Library You can search the system using either the recursive or stream-based methods
+3. Searching the Library You can search the system using either the recursive or stream methods
    Both methods return a list containing one instance of a matching item, ignoring case.
 
 4. Admin Tools Admin users have exclusive access to generate console reports and back up data by calling
