@@ -11,20 +11,20 @@ The system enforces specific borrowing limits, such as a maximum of 5 books for
 Students and up to 10 total items for Teachers.
 
 ##### Item Management: Manages an inventory of Books, DVDs, and Magazines
-It tracks multiple copies of items and monitors their specific status (e.g., IN_STORE, BORROWED, or LOST).
+It tracks multiple copies of items and monitors their status (e.g., IN_STORE, BORROWED, or LOST).
 
 ##### Advanced Searching: 
- Includes both recursive and Java Stream-based search methods that allow users to find 
+ Includes both recursive and stream search methods that allow users to find 
 items by title or author. The search is case-insensitive and filters out duplicate copies
 to return a clean result list.
 
 ##### Data Persistence: 
 Supports loading initial system data from CSV files and allows Admin 
-users to back up current users and item inventories directly into CSV format.
+users to back up current users and item inventories directly into CSV files.
 
 ##### Admin Reporting: 
 Admins can generate comprehensive reports of all items and their statuses 
-by utilizing the Reportable interface
+by using the Reportable interface
 
 ### Installation
 This project is built and managed using Maven
