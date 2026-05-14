@@ -3,6 +3,7 @@ package org.liamb.domain;
 import lombok.ToString;
 import org.liamb.Exceptions.ItemUnavailableException;
 import org.liamb.util.Constants;
+import org.liamb.util.Validation;
 
 @ToString(callSuper = true)
 public class Teacher extends User{
@@ -20,10 +21,10 @@ public class Teacher extends User{
     @Override
     public void borrowItem(Item item) throws ItemUnavailableException {
         //TODO unit test
-        if (this.borrowedItems.size() >= Constants.MAX_ITEMS_TEACHER) {
+        if (Validation.canTeacherBorrow(this)) {
             throw new ItemUnavailableException("Invalid operation: teacher has reached maximum borrow limit");
         }
-        if (item.getStatus() != Item.ItemStatus.IN_STORE) {
+        if (Validation.isItemAvailable(item)) {
             throw new ItemUnavailableException(
                     String.format("Invalid operation: the item %s is unavailable", item.getTitle()));
         }

@@ -1,5 +1,10 @@
 package org.liamb.util;
 
+import org.liamb.domain.Book;
+import org.liamb.domain.Item;
+import org.liamb.domain.Student;
+import org.liamb.domain.Teacher;
+
 public class Validation {
     /**
      * validates if the isbn adheres to the correct formatting
@@ -11,53 +16,48 @@ public class Validation {
         if (isbn == null || isbn.trim().isEmpty()) {
             return false;
         }
-        StringBuilder numsOnly = new StringBuilder();
-        for (char c : isbn.toCharArray()) {
-            if (c != '-' && c != ' ') {
-                numsOnly.append(c);
-            }
-        }
-        String cleanIsbn = numsOnly.toString();
-        if (cleanIsbn.length() == 10) {
-            return isValidISBN10(cleanIsbn);
-        } else if (cleanIsbn.length() == 13) {
-            return isValidISBN13(cleanIsbn);
-        }
-        return false;
-    }
 
-    private static boolean isValidISBN10(String isbn) {
-        for (int i = 0; i < 9; i++) {
-            if (!Character.isDigit(isbn.charAt(i))) {
-                return false;
-            }
-        }
-
-        char last = isbn.charAt(9);
-        if (!Character.isDigit(last) && last != 'X' && last != 'x') {
+        if (isbn.length() != 13) {
             return false;
         }
 
-        int sum = 0;
-        for (int i = 0; i < 9; i++) {
-            sum += (10 - i) * (isbn.charAt(i) - '0');
-        }
-        sum += (last == 'X' || last == 'x') ? 10 : (last - '0');
-        return sum % 11 == 0;
-    }
-
-    private static boolean isValidISBN13(String isbn) {
         for (int i = 0; i < 13; i++) {
             if (!Character.isDigit(isbn.charAt(i))) {
                 return false;
             }
         }
 
-        int sum = 0;
-        for (int i = 0; i < 13; i++) {
-            int digit = isbn.charAt(i) - '0';
-            sum += (i % 2 == 0) ? digit : digit * 3;
-        }
-        return sum % 10 == 0;
+        return true;
+    }
+
+    /**
+     * checks if the item is available to be borrowed
+     * @param item item to be borrowed
+     * @return true if available, false if unavailable
+     */
+    public static boolean isItemAvailable(Item item) {
+        //TODO unit test
+        return item != null && item.getStatus() == Item.ItemStatus.IN_STORE;
+    }
+
+    /**
+     * checks if student can borrow book
+     * @param student the student borrowing the book
+     * @param item the item (book) to be borrowed
+     * @return true if book can be borrowed, false if not
+     */
+    public static boolean canStudentBorrow(Student student, Item item) {
+        //TODO unit test
+        return (item instanceof Book) && (student.getBorrowedItems().size() < Constants.MAX_BOOKS_STUDENT);
+    }
+
+    /**
+     * checks if teacher can borrow book
+     * @param teacher the teacher borrowing the item
+     * @return true if item can be borrowed, false if not
+     */
+    public static boolean canTeacherBorrow(Teacher teacher) {
+        //TODO unit test
+        return teacher.getBorrowedItems().size() < Constants.MAX_ITEMS_TEACHER;
     }
 }
