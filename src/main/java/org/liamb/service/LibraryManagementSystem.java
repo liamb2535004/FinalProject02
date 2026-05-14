@@ -1,21 +1,20 @@
 package org.liamb.service;
 
+import lombok.Getter;
 import org.liamb.Exceptions.InvalidIsbnException;
 import org.liamb.Exceptions.ItemUnavailableException;
 import org.liamb.domain.*;
 import org.liamb.util.Constants;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Stack;
 
+@Getter
 public class LibraryManagementSystem {
-    private static List<User> users = new ArrayList<>();
-    private static List<Item> items = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     public void loadCsvFiles() {
         //TODO unit test
