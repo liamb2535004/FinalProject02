@@ -143,8 +143,41 @@ public class LibraryManagementSystem {
         recursiveHelper(query, results, index + 1);
     }
 
-    public Item searchItemStream(String query) {
-        //TODO write method, unit test and exception handling
+    public List<Item> searchItemStream(String query) {
+        //TODO unit test
+        List<Item> results = new ArrayList<>();
+        if (query == null || query.trim().isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        String lowerQuery = query.toLowerCase();
+
+        items.stream()
+                .filter(item -> {
+                    if (item.getTitle().toLowerCase().contains(lowerQuery)) {
+                        return true;
+                    }
+                    if (item instanceof Book) {
+                        return ((Book) item).getAuthor().toLowerCase().contains(lowerQuery);
+                    }
+                    return false;
+                })
+                .forEach(item -> {
+                    boolean alreadyExists = false;
+
+                    for (Item existingItem : results) {
+                        if (existingItem.getClass().equals(item.getClass()) &&
+                        existingItem.getTitle().equalsIgnoreCase(item.getTitle())) {
+                            alreadyExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!alreadyExists) {
+                        results.add(item);
+                    }
+                });
+        return results;
     }
 
     public void sortUsers() {
