@@ -24,6 +24,10 @@ public class Admin extends User implements Reportable {
         super(id, name);
     }
 
+    /**
+     * generates and prints a detailed report of all borrowed, in-store and lost items
+     * @param libraryManagementSystem the system containing the list of all items
+     */
     @Override
     public void generateReport(LibraryManagementSystem libraryManagementSystem) {
         //TODO unit test
@@ -61,6 +65,11 @@ public class Admin extends User implements Reportable {
         System.out.println("================================\n");
     }
 
+    /**
+     * backs up all of the users and items data into the items.csv and users.csv files,
+     * overwriting previous data.
+     * @param libraryManagementSystem the system containing the lists of all users and items
+     */
     public void backupData(LibraryManagementSystem libraryManagementSystem) {
         //TODO unit test
         File itemsFile = new File(Constants.ITEMS_CSV_PATH);

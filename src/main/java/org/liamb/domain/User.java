@@ -31,6 +31,11 @@ public abstract class User {
         this.borrowedItems = new ArrayList<>();
     }
 
+    /**
+     * Borrows the specified item for the User.
+     * @param item the item to be borrowed
+     * @throws ItemUnavailableException Throws an exception if an item is not in the library.
+     */
     public void borrowItem(Item item) throws ItemUnavailableException {
         //TODO unit test
         if (item.getStatus() != Item.ItemStatus.IN_STORE) {
@@ -42,6 +47,11 @@ public abstract class User {
         item.setStatus(Item.ItemStatus.BORROWED);
     }
 
+    /**
+     * returns item from user's borrowed items list back to the library
+     * @param item the item to be returned
+     * @throws ItemNotBorrowedException if the item is not in the user's borrowed items list
+     */
     public void returnItem(Item item) throws ItemNotBorrowedException {
         //TODO unit test
         if (!this.borrowedItems.contains(item)) {

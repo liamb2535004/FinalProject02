@@ -1,6 +1,11 @@
 package org.liamb.util;
 
 public class Validation {
+    /**
+     * validates if the isbn adheres to the correct formatting
+     * @param isbn the isbn to be validated
+     * @return true if the isbn is valid, false if it is invalid
+     */
     public static boolean isValidISBN(String isbn) {
         //TODO unit test
         if (isbn == null || isbn.trim().isEmpty()) {

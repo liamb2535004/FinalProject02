@@ -16,6 +16,10 @@ public class LibraryManagementSystem {
     private List<User> users = new ArrayList<>();
     private List<Item> items = new ArrayList<>();
 
+    /**
+     * reads the data from the users.csv and items.csv files and
+     * initializes the users and items lists in the system
+     */
     public void loadCsvFiles() {
         //TODO unit test
         File itemsFile = new File(Constants.ITEMS_CSV_PATH);
@@ -97,6 +101,12 @@ public class LibraryManagementSystem {
         }
     }
 
+    /**
+     * Recursively searches for items matching the query by title or author (case-insensitive).
+     * If multiple copies exist, the result contains only one distinct copy.
+     * @param query the title or author to search for
+     * @return a list of items containing the query in the title or author name
+     */
     public List<Item> searchItemRecursive(String query) {
         //TODO unit test
         List<Item> results = new ArrayList<>();
@@ -142,6 +152,12 @@ public class LibraryManagementSystem {
         recursiveHelper(query, results, index + 1);
     }
 
+    /**
+     * searches for items matching the query by title or author (case-insensitive) by using Java Stream
+     * If multiple copies exist, the result contains only one distinct copy.
+     * @param query the title or author to search for
+     * @return a list of items containing the query in the title or author name
+     */
     public List<Item> searchItemStream(String query) {
         //TODO unit test
         List<Item> results = new ArrayList<>();
@@ -179,9 +195,11 @@ public class LibraryManagementSystem {
         return results;
     }
 
+    /**
+     * sorts the users list by name using the bubble sorting strategy
+     */
     public void sortUsers() {
         //TODO unit test
-        //bubble sorting
         if (users == null || users.size() <= 1) {
             return;
         }
@@ -200,9 +218,11 @@ public class LibraryManagementSystem {
         }
     }
 
+    /**
+     * sorts the items list by title using the selection sorting strategy
+     */
     public void sortItems() {
         //TODO unit test
-        //selection
         if (items == null || items.size() <= 1) {
             return;
         }
