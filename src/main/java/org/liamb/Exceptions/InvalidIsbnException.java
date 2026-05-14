@@ -18,7 +18,7 @@ public class InvalidIsbnException extends RuntimeException {
         }
 
         if (cleanIsbn.length() != 10 && cleanIsbn.length() != 13) {
-            return "Invalid operation: ISBN must contain exactly 10 or 13 digits";
+            return "Invalid operation: ISBN must contain exactly 13 digits";
         } else {
             return "Invalid operation: ISBN format is incorrect";
         }
