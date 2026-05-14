@@ -98,8 +98,49 @@ public class LibraryManagementSystem {
         }
     }
 
-    public Item searchItemRecursive(String query) {
-        //TODO write method, unit test and exception handling
+    public List<Item> searchItemRecursive(String query) {
+        //TODO unit test
+        List<Item> results = new ArrayList<>();
+        if (query == null || query.trim().isEmpty()) {
+            return results;
+        }
+        recursiveHelper(query.toLowerCase(), results, 0);
+        return results;
+    }
+
+    private void recursiveHelper(String query, List<Item> results, int index) {
+        if (index >= items.size()) {
+            return;
+        }
+
+        Item currentItem = items.get(index);
+        boolean isMatch = false;
+
+        if (currentItem.getTitle().toLowerCase().contains(query)) {
+            isMatch = true;
+        } else if (currentItem instanceof Book) {
+            Book book = (Book) currentItem;
+            if (book.getAuthor().toLowerCase().contains(query)) {
+                isMatch = true;
+            }
+        }
+
+        if (isMatch) {
+            boolean alreadyExists = false;
+
+            for (Item existingItem: results) {
+                if (existingItem.getClass().equals(currentItem.getClass()) &&
+                existingItem.getTitle().equalsIgnoreCase(currentItem.getTitle())) {
+                    alreadyExists = true;
+                    break;
+                }
+            }
+
+            if (!alreadyExists) {
+                results.add(currentItem);
+            }
+        }
+        recursiveHelper(query, results, index + 1);
     }
 
     public Item searchItemStream(String query) {
