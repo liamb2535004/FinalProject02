@@ -21,12 +21,12 @@ public class Teacher extends User{
     @Override
     public void borrowItem(Item item) throws ItemUnavailableException {
         //TODO unit test
-        if (Validation.canTeacherBorrow(this)) {
-            throw new ItemUnavailableException("Invalid operation: teacher has reached maximum borrow limit");
-        }
-        if (Validation.isItemAvailable(item)) {
+        if (!Validation.isItemAvailable(item)) {
             throw new ItemUnavailableException(
                     String.format("Invalid operation: the item %s is unavailable", item.getTitle()));
+        }
+        if (!Validation.canTeacherBorrow(this)) {
+            throw new ItemUnavailableException("Invalid operation: teacher has reached maximum borrow limit");
         }
 
         super.borrowItem(item);

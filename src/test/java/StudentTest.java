@@ -50,7 +50,7 @@ public class StudentTest {
         Student student = new Student("U0003", "name");
 
         for (int i = 1; i <= 5; i++) {
-            String bookId = "B" + i;
+            String bookId = "B" + String.format("%04d", i);;
             student.borrowItem(new Book(bookId, Item.ItemStatus.IN_STORE, "Title " + i, "1234567890123", "Author", "Genre"));
         }
 
