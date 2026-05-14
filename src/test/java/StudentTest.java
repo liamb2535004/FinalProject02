@@ -18,7 +18,7 @@ public class StudentTest {
     }
     @Test
     @DisplayName("cannot borrow DVD")
-    public void testBorrowItem2() {
+    void testBorrowItem2() {
         Student student = new Student("U0002", "Bob");
         DVD dvd = new DVD("D0001", Item.ItemStatus.IN_STORE, "title", "author", 100);
 
@@ -32,7 +32,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("cannot borrow Magazine")
-    public void testBorrowItem3() {
+    void testBorrowItem3() {
         Student student = new Student("U0002", "Bob");
         Magazine magazine = new Magazine("M0001", Item.ItemStatus.IN_STORE, "title", "123", "publisher");
 
@@ -46,7 +46,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("cannot borrow more than 5 books")
-    public void testBorrowItem4() throws ItemUnavailableException {
+    void testBorrowItem4() throws ItemUnavailableException {
         Student student = new Student("U0003", "name");
 
         for (int i = 1; i <= 5; i++) {
@@ -63,7 +63,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("cannot borrow unavailable item")
-    public void testBorrowItem5() {
+    void testBorrowItem5() {
         Student student = new Student("U0004", "Diana");
         Book borrowedBook = new Book("B007", Item.ItemStatus.BORROWED, "1984", "1234567890123", "Orwell", "Dystopian");
 
@@ -74,7 +74,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("default returnItem")
-    public void testReturnItem() throws ItemUnavailableException {
+    void testReturnItem() throws ItemUnavailableException {
         Student student = new Student("U0005", "Eve");
         Book book = new Book("B008", Item.ItemStatus.IN_STORE, "The Hobbit", "1234567890123", "Tolkien", "Fantasy");
 

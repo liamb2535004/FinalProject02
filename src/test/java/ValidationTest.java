@@ -7,7 +7,7 @@ import org.liamb.util.Validation;
 
 public class ValidationTest {
     @Test
-    public void testIsValidISBN() {
+    void testIsValidISBN() {
         //13 digits
         Assertions.assertTrue(Validation.isValidISBN("1234567890123"));
 
@@ -26,7 +26,7 @@ public class ValidationTest {
     }
 
     @Test
-    public void testIsItemAvailable() {
+    void testIsItemAvailable() {
         //IN_STORE
         Book availableBook = new Book("B0001", Item.ItemStatus.IN_STORE, "title", "1234567890123", "author", "genre");
         Assertions.assertTrue(Validation.isItemAvailable(availableBook));
@@ -37,7 +37,7 @@ public class ValidationTest {
     }
 
     @Test
-    public void testCanStudentBorrow() {
+    void testCanStudentBorrow() {
         Student student = new Student("U0001", "name");
         Book book = new Book("B0001", Item.ItemStatus.IN_STORE, "title", "1234567890123", "author", "genre");
         DVD dvd = new DVD("D0001", Item.ItemStatus.IN_STORE, "movie", "director", 100);
@@ -57,7 +57,7 @@ public class ValidationTest {
     }
 
     @Test
-    public void testCanTeacherBorrow() {
+    void testCanTeacherBorrow() {
         Teacher teacher = new Teacher("U0001", "name");
 
         //returns true if teacher has 0 books

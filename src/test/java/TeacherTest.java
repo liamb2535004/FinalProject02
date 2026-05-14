@@ -7,7 +7,7 @@ import org.liamb.domain.*;
 public class TeacherTest {
     @Test
     @DisplayName("All types can be borrowed")
-    public void testBorrowItem1() throws ItemUnavailableException {
+    void testBorrowItem1() throws ItemUnavailableException {
         Teacher teacher = new Teacher("U0001", "name");
         Book book = new Book("B0001", Item.ItemStatus.IN_STORE, "title", "1234567890123", "author", "genre");
         DVD dvd = new DVD("D0001", Item.ItemStatus.IN_STORE, "title", "director", 120);
@@ -29,7 +29,7 @@ public class TeacherTest {
 
     @Test
     @DisplayName("cannot borrow > 10 items")
-    public void testBorrowItem2() throws ItemUnavailableException {
+    void testBorrowItem2() throws ItemUnavailableException {
         Teacher teacher = new Teacher("U0001", "name");
 
         for (int i = 1; i <= 10; i++) {
@@ -49,7 +49,7 @@ public class TeacherTest {
 
     @Test
     @DisplayName("cannot borrow unavailable items")
-    public void testBorrowItem3() {
+    void testBorrowItem3() {
         Teacher teacher = new Teacher("U0002", "Dr. Jones");
         DVD lostDvd = new DVD("D0001", Item.ItemStatus.LOST, "title", "director", 100);
 
@@ -62,7 +62,7 @@ public class TeacherTest {
 
     @Test
     @DisplayName("default returnItem")
-    public void testReturnItem() throws ItemUnavailableException {
+    void testReturnItem() throws ItemUnavailableException {
         Teacher teacher = new Teacher("U0001", "name");
         Magazine magazine = new Magazine("M0001", Item.ItemStatus.IN_STORE, "title", "123", "publisher");
 
