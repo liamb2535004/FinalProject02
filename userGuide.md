@@ -51,4 +51,5 @@ limit, the system will prevent the action and throw an ItemUnavailableException.
 
    Backing Up Data: Admins can securely back up the current state of the library. 
    This will export all user data and item inventory back into the .csv files.
+
 ![backupCsvData() example](src/main/resources/backData.png)
