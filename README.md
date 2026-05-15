@@ -1,9 +1,9 @@
 # Library Management System - Java Project
 ### Description
 The Library Management System is a Java-based application that allows users to borrow, return, and search 
-for various library items Built using Object-Oriented Programming (OOP) principles such as inheritance,
-polymorphism, abstract classes, and interfaces, the system handles library operations while utilizing 
-exception handling and standard Java collections
+for various library items Built using Object-Oriented Programming (OOP) principles like inheritance,
+polymorphism, abstract classes, and interfaces. The system also uses
+exception handling and standard Java collections.
 
 ### Core Features:
 ##### User Management: Supports three distinct user roles: Students, Teachers, and Admins
@@ -27,13 +27,12 @@ Admins can generate comprehensive reports of all items and their statuses
 by using the Reportable interface
 
 ### Installation
-This project is built and managed using Maven
-Clone the public Git repository to your local machine
-Ensure you have Java and Maven installed on your system.
-Verify that your csv files exist. The system expects default CSV files
-to be located at src/main/resources/items.csv and src/main/resources/users.csv.
-Run standard Maven commands (e.g., mvn clean install) to compile the project and 
-download dependencies such as JUnit (for unit testing) and Lombok.
+- This project is built and managed using Maven
+- Clone the public Git repository to your local machine
+- Ensure you have Java and Maven installed on your system.
+- Verify that your csv files exist. The system expects default CSV files
+  to be located at src/main/resources/items.csv and src/main/resources/users.csv.
+- download dependencies such as JUnit (for unit testing) and Lombok.
 
 ### Usage
 The primary entry point for managing the system is the LibraryManagementSystem class
@@ -53,8 +52,8 @@ if a limit is reached or the item is missing.
    Both methods return a list containing one instance of a matching item, ignoring case.
 
 4. Admin Tools Admin users have exclusive access to generate console reports and back up data by calling
-   admin.generateReport(system); // Prints inventory report
-   admin.backupData(system);     // Saves current lists to CSV
+   - admin.generateReport(system); // Prints inventory report
+   - admin.backupData(system);     // Saves current lists to CSV
 
 ### Authors
    Liam Bohdjalian (Student ID: 2535004)
