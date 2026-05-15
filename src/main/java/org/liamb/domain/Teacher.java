@@ -2,7 +2,6 @@ package org.liamb.domain;
 
 import lombok.ToString;
 import org.liamb.Exceptions.ItemUnavailableException;
-import org.liamb.util.Constants;
 import org.liamb.util.Validation;
 
 @ToString(callSuper = true)

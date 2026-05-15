@@ -12,7 +12,6 @@ public class Validation {
      * @return true if the isbn is valid, false if it is invalid
      */
     public static boolean isValidISBN(String isbn) {
-        //TODO unit test
         if (isbn == null || isbn.trim().isEmpty()) {
             return false;
         }
@@ -36,7 +35,6 @@ public class Validation {
      * @return true if available, false if unavailable
      */
     public static boolean isItemAvailable(Item item) {
-        //TODO unit test
         return item != null && item.getStatus() == Item.ItemStatus.IN_STORE;
     }
 
@@ -47,7 +45,6 @@ public class Validation {
      * @return true if book can be borrowed, false if not
      */
     public static boolean canStudentBorrow(Student student, Item item) {
-        //TODO unit test
         return (item instanceof Book) && (student.getBorrowedItems().size() < Constants.MAX_BOOKS_STUDENT);
     }
 
@@ -57,7 +54,6 @@ public class Validation {
      * @return true if item can be borrowed, false if not
      */
     public static boolean canTeacherBorrow(Teacher teacher) {
-        //TODO unit test
         return teacher.getBorrowedItems().size() < Constants.MAX_ITEMS_TEACHER;
     }
 }

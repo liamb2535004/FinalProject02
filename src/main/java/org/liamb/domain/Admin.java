@@ -25,7 +25,6 @@ public class Admin extends User implements Reportable {
      */
     @Override
     public void generateReport(LibraryManagementSystem libraryManagementSystem) {
-        //TODO unit test
         System.out.println("--- LIBRARY REPORT ---");
         List<Item> items = libraryManagementSystem.getItems();
 
@@ -66,7 +65,6 @@ public class Admin extends User implements Reportable {
      * @param libraryManagementSystem the system containing the lists of all users and items
      */
     public void backupData(LibraryManagementSystem libraryManagementSystem) {
-        //TODO unit test
         File itemsFile = new File(Constants.ITEMS_CSV_PATH);
         File usersFile = new File(Constants.USERS_CSV_PATH);
         List<Item> items = libraryManagementSystem.getItems();

@@ -100,7 +100,6 @@ public class LibraryManagementSystem {
      * initializes the users and items lists in the system
      */
     public void loadCsvFiles() {
-        //TODO unit test
         File itemsFile = new File(Constants.ITEMS_CSV_PATH);
         File usersFile = new File(Constants.USERS_CSV_PATH);
 
@@ -188,7 +187,6 @@ public class LibraryManagementSystem {
      * @return a list of items containing the query in the title or author name
      */
     public List<Item> searchItemRecursive(String query) {
-        //TODO unit test
         List<Item> results = new ArrayList<>();
         if (query == null || query.trim().isEmpty()) {
             return results;
@@ -239,7 +237,6 @@ public class LibraryManagementSystem {
      * @return a list of items containing the query in the title or author name
      */
     public List<Item> searchItemStream(String query) {
-        //TODO unit test
         List<Item> results = new ArrayList<>();
         if (query == null || query.trim().isEmpty()) {
             return new ArrayList<>();
@@ -279,7 +276,6 @@ public class LibraryManagementSystem {
      * sorts the users list by name using the bubble sorting strategy
      */
     public void sortUsers() {
-        //TODO unit test
         if (users == null || users.size() <= 1) {
             return;
         }
@@ -302,7 +298,6 @@ public class LibraryManagementSystem {
      * sorts the items list by title using the selection sorting strategy
      */
     public void sortItems() {
-        //TODO unit test
         if (items == null || items.size() <= 1) {
             return;
         }

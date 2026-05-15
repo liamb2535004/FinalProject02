@@ -2,7 +2,6 @@ package org.liamb.domain;
 
 import lombok.ToString;
 import org.liamb.Exceptions.ItemUnavailableException;
-import org.liamb.util.Constants;
 import org.liamb.util.Validation;
 
 @ToString(callSuper = true)
@@ -21,7 +20,6 @@ public class Student extends User{
      */
     @Override
     public void borrowItem(Item item) throws ItemUnavailableException {
-        //TODO unit test
         if (!Validation.isItemAvailable(item)) {
             throw new ItemUnavailableException("Invalid operation: This item is currently not available.");
         }

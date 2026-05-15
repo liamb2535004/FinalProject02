@@ -1,12 +1,8 @@
 package org.liamb.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 import org.liamb.Exceptions.ItemNotBorrowedException;
 import org.liamb.Exceptions.ItemUnavailableException;
-
 import java.util.ArrayList;
 import java.util.List;
 
