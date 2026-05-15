@@ -2,12 +2,12 @@
 Welcome to the Library Management System. This guide provides an
 overview of how to use the features of the application.
 
-### 1. Getting Started & Data Loading
+### 1. Data Loading
    To begin using the Library Management System, you must initialize the core system and load the 
    existing library data. The system reads from default CSV files to populate the users and items lists.
    ![loading csvFiles snd initializing items and users lists](src/main/resources/loadCsv.png)
 
-### 2. User Roles and Limitations
+### 2. User Types and Restrictions
    The system supports three distinct types of users, each with specific borrowing rules:
 
    - Students: Can borrow a maximum of 5 books at a time (Books only)
@@ -43,7 +43,7 @@ limit, the system will prevent the action and throw an ItemUnavailableException.
    The library can sort its internal lists of Users and Items using predefined sorting strategies
    system.sortItems() sorts by title using a bubble sorting algorithm
    system.sortUsers() sorts by name using a selection sorting algorithm
-### 6. Administrator Tools
+### 6. Admin Tools
    Admin users have access to exclusive management tools.
    Generating Reports: Admins can generate a comprehensive report detailing all 
    items in the system, organized by their status (Borrowed, In-Store, or Lost)
